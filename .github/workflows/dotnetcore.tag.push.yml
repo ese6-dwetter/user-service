@@ -113,7 +113,7 @@ jobs:
         uses: azure/setup-kubectl@v1
 
       - name: Set context via kubeconfig
-        uses: azure/k8s-set-context@v1
+        uses: azure/k8s-set-context@v2
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
