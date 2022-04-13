@@ -74,13 +74,13 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: Download release artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v3
         with:
           name: release-artifact
           path: ./out
       
       - name: Download Dockerfile artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v3
         with:
           name: dockerfile-artifact
           path: .
@@ -100,7 +100,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: Download Kubernetes artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v3
         with:
             name: kubernetes-artifact
             path: ./kube
