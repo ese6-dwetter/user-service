@@ -6,7 +6,7 @@ on:
 
 jobs:
   sonarcloud-scan:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
         with:
@@ -21,13 +21,14 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   build:
-    runs-on: ubuntu-18.04
-    container:
-      image: mcr.microsoft.com/dotnet/core/sdk:3.1.201-bionic
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '3.1.x'
       
       - name: Install dependencies
         run: dotnet restore
