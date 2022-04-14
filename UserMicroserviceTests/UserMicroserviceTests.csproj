@@ -8,7 +8,7 @@
 
     <ItemGroup>
         <PackageReference Include="coverlet.collector" Version="3.1.2" />
-        <PackageReference Include="Mongo2Go" Version="2.2.12" />
+        <PackageReference Include="Mongo2Go" Version="2.2.16" />
         <PackageReference Include="Moq" Version="4.17.2" />
         <PackageReference Include="nunit" Version="3.13.3" />
         <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
