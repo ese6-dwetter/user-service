@@ -12,7 +12,7 @@ env:
 
 jobs:
   sonarcloud-scan:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
         with:
@@ -27,14 +27,16 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   build:
-    runs-on: ubuntu-18.04
-    container:
-      image: mcr.microsoft.com/dotnet/core/sdk:3.1.201-bionic
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
       
+      - uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '3.1.x'
+          
       - name: Decrypt the GPG encrypted config files
         run: gpg --quiet --batch --yes --passphrase ${{ secrets.GPG_PASSPHRASE }}  --output ./${{ env.PROJECT_NAME }}/appsettings.json --decrypt ./${{ env.PROJECT_NAME }}/appsettings.develop.json.gpg
       
@@ -70,7 +72,7 @@ jobs:
 
   deliver:
     needs: [sonarcloud-scan, build]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Download release artifact
         uses: actions/download-artifact@v1
@@ -92,7 +94,7 @@ jobs:
   
   deploy:
     needs: deliver
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Download Kubernetes artifact
         uses: actions/download-artifact@v1
