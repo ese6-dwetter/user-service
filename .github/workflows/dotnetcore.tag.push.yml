@@ -121,7 +121,7 @@ jobs:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
       
       - name: Deploy Kubernetes with manifests
-        uses: azure/k8s-deploy@v1
+        uses: azure/k8s-deploy@v4
         with:
             namespace: ${{ env.KUBERNETES_NAMESPACE }}
             manifests: |
