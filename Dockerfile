@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1.24-bionic
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1.32-bionic
 
 WORKDIR /app
 
